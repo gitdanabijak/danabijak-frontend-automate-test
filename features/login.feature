@@ -1,4 +1,4 @@
-Feature: Homepage presence
+Feature: Login Page
 
     Scenario: User can login
         Given open browser

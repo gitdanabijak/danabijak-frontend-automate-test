@@ -3,6 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+import time
 
 @when('open danabijak login site')
 def homepage_show_up(context):
@@ -22,4 +23,11 @@ def user_input_password(context):
 def user_click_login(context):
     context.driver.find_element(By.XPATH, "//button[@type='commit']").click()
     WebDriverWait(context.driver, 10).until(EC.presence_of_element_located((By.XPATH, "//span[normalize-space()='Selamat datang, Ibnu Testing!']")))
+    WebDriverWait(context.driver, 10).until(EC.presence_of_element_located((By.XPATH, "//select[@name='loan_purpose']")))
+    context.driver.find_element(By.XPATH, "//select[@name='loan_purpose']/option[10]").click()
+    time.sleep(5)
+    context.driver.find_element(By.LINK_TEXT, "Mohon Maaf").click()
+    time.sleep(3)
+    WebDriverWait(context.driver, 10).until(EC.presence_of_element_located((By.XPATH, "//h3[@class='fm-form-subheading']")))
+    
 
