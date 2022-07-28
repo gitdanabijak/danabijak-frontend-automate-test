@@ -1,0 +1,1 @@
+# danabijak-frontend-automate-test
