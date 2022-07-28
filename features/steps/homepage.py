@@ -29,3 +29,10 @@ def click_login_button(context):
     actions = ActionChains(context.driver)
     actions.move_to_element(element).perform()
     context.driver.find_element(By.LINK_TEXT, "Masuk").click()
+
+@then('user can click register button')
+def click_register_button(context):
+    element = context.driver.find_element(By.XPATH, '//*[@id="nav-collapse"]/ul/li[3]/button')
+    actions = ActionChains(context.driver)
+    actions.move_to_element(element).perform()
+    context.driver.find_element(By.XPATH, '//*[@id="nav-collapse"]/ul/li[3]/button').click()

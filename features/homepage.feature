@@ -10,3 +10,8 @@ Feature: Homepage presence
         Given open browser
         When open danabijak site
         Then user can click login button
+
+    Scenario: User can access register page
+        Given open browser
+        When open danabijak site
+        Then user can click register button
