@@ -1,6 +1,6 @@
-Feature: showing off behave
+Feature: Homepage presence
 
-    Scenario: run a simple test
-        Given we have behave installed
-        When we implement a test
-        Then behave will test it for us!
+    Scenario: User can see TKB90
+        Given user open danabijak site
+        When homepage presence
+        Then user can see tkb90 info
