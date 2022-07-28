@@ -1,16 +1,31 @@
 from behave import *
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.common.action_chains import ActionChains
 
-@given('user open danabijak site')
+# Common
+
+@given('open browser')
 def open_browser(context):
     context.driver=webdriver.Chrome()
 
-@when('homepage presence')
+@when('open danabijak site')
 def homepage_show_up(context):
     context.driver.get('https://danabijak.com')
 
+@then('close browser')
+def close_browser(context):
+    context.driver.close()
+
+# Others
+
 @then('user can see tkb90 info')
 def see_tkb_info(context):
-    context.driver.find_elements(By.XPATH, "/html/body/div[1]/div/div/div[1]/div/nav/div/div[2]/div/ul/li[4]/button/span[2]")
-    context.driver.close()
+    context.driver.find_element(By.XPATH, '//*[@id="nav-collapse"]/ul/li[4]/button/span[2]')
+
+@then('user can click login button')
+def click_login_button(context):
+    element = context.driver.find_element(By.LINK_TEXT, "Masuk")
+    actions = ActionChains(context.driver)
+    actions.move_to_element(element).perform()
+    context.driver.find_element(By.LINK_TEXT, "Masuk").click()
